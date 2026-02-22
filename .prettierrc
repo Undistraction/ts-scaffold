@@ -1,0 +1,19 @@
+{
+  "trailingComma": "all",
+  "quoteProps": "as-needed",
+  "tabWidth": 2,
+  "semi": false,
+  "singleQuote": true,
+  "bracketSpacing": true,
+  "arrowParens": "always",
+  "organizeImportsSkipDestructiveCodeActions": true,
+  "plugins": ["prettier-plugin-organize-imports"],
+  "overrides": [
+    {
+      "files": ["*.json", "*.jsonc"],
+      "options": {
+        "trailingComma": "none"
+      }
+    }
+  ]
+}
