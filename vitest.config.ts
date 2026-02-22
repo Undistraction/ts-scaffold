@@ -6,7 +6,8 @@ export default mergeConfig(
   defineConfig({
     test: {
       globals: true,
-      include: [`src/**/*.{test,spec}.ts`],
+      include: [`src/**/*.{test,spec}.{ts,tsx}`],
+      setupFiles: [`./src/test/setup.ts`],
       exclude: [`node_modules`, `dist`, `coverage`],
       coverage: {
         provider: `v8`,
