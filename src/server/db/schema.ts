@@ -3,7 +3,9 @@ import type { LogLevel } from '../const/LOG_LEVEL'
 
 // Naive implementation so we have something to test
 export const logEntries = sqliteTable(`log_entries`, {
-  id: integer(`id`).primaryKey({ autoIncrement: true }),
+  id: text(`id`)
+    .primaryKey()
+    .$defaultFn(() => crypto.randomUUID()),
   message: text(`message`).notNull(),
   level: text(`level`).notNull().$type<LogLevel>(),
   createdAt: integer(`created_at`, { mode: `timestamp` })

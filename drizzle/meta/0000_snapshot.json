@@ -1,7 +1,7 @@
 {
   "version": "6",
   "dialect": "sqlite",
-  "id": "aae41dcd-7352-4aa1-b1c7-e4691a6a5960",
+  "id": "b3d94023-22a9-4ea6-9f36-3225c11b5964",
   "prevId": "00000000-0000-0000-0000-000000000000",
   "tables": {
     "log_entries": {
@@ -9,10 +9,10 @@
       "columns": {
         "id": {
           "name": "id",
-          "type": "integer",
+          "type": "text",
           "primaryKey": true,
           "notNull": true,
-          "autoincrement": true
+          "autoincrement": false
         },
         "message": {
           "name": "message",

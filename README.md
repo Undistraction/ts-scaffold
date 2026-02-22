@@ -71,7 +71,7 @@ drizzle/              # Generated migrations
 
 ## Database
 
-SQLite via Drizzle ORM, running in-memory. Migrations are generated with `npx drizzle-kit generate` and applied automatically on startup.
+SQLite via Drizzle ORM, running in-memory. Migrations are generated with `npx drizzle-kit generate`, and this should be done after any changes to the schema. Migrations are applied automatically on app and test startup.
 
 ## Husky
 
