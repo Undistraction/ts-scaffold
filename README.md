@@ -1,5 +1,7 @@
 # ts-scaffold
 
+[https://github.com/Undistraction/ts-scaffold](https://github.com/Undistraction/ts-scaffold)
+
 Minimal TypeScript project scaffold with React, Express, Vite, Vitest, Tailwind, Drizzle ORM, ESLint, Prettier, and Husky.
 
 ## Setup
