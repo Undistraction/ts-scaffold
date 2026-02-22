@@ -20,16 +20,16 @@ npm install
 
 ## Quick-start
 
-Start React client (Port 3000)
-
-```bash
-nvm run dev:client
-```
-
 Start Express server (Port 3001)
 
 ```bash
 nvm run dev:server
+```
+
+Start React client (Port 3000)
+
+```bash
+nvm run dev:client
 ```
 
 ## All Scripts
