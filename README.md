@@ -71,6 +71,6 @@ drizzle/              # Generated migrations
 
 SQLite via Drizzle ORM, running in-memory. Migrations are generated with `npx drizzle-kit generate` and applied automatically on startup.
 
-## Pre-commit
+## Husky
 
-Husky runs on commit: lint-staged, type-check, and unit tests.
+On commit, Husky runs linting and tests.
