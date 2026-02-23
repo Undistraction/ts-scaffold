@@ -5,6 +5,14 @@ import { logEntries } from '../db/schema'
 
 export const app = express()
 
+// Middleware
+app.use((_req, res, next) => {
+  // So that we can connect from the client which is running on a different port
+  res.setHeader(`Access-Control-Allow-Origin`, `*`)
+  next()
+})
+
+// Routes
 app.get(`/ping`, (req: Request<{ id: string }>, res) => {
   try {
     db.insert(logEntries)
