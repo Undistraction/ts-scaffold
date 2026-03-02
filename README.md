@@ -2,7 +2,7 @@
 
 [https://github.com/Undistraction/ts-scaffold](https://github.com/Undistraction/ts-scaffold)
 
-Minimal TypeScript project scaffold with React, Express, Vite, Vitest, Tailwind, Drizzle ORM, ESLint, Prettier, and Husky.
+Minimal TypeScript project scaffold with React, Express, Vite, Vitest, Tailwind, React-Query, Lucide-Icons, Drizzle ORM, ESLint, Prettier, and Husky.
 
 ## Setup
 
@@ -75,4 +75,4 @@ SQLite via Drizzle ORM, running in-memory. Migrations are generated with `npx dr
 
 ## Husky
 
-On commit, Husky runs linting and tests.
+On commit, Husky runs linting, runs TSC to detect issues, and runs unit tests.
