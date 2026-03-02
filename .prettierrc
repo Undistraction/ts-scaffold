@@ -7,7 +7,10 @@
   "bracketSpacing": true,
   "arrowParens": "always",
   "organizeImportsSkipDestructiveCodeActions": true,
-  "plugins": ["prettier-plugin-organize-imports"],
+  "plugins": [
+    "prettier-plugin-organize-imports",
+    "prettier-plugin-tailwindcss"
+  ],
   "overrides": [
     {
       "files": ["*.json", "*.jsonc"],
