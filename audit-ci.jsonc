@@ -1,0 +1,10 @@
+{
+  // $schema provides code completion hints to IDEs.
+  "$schema": "https://github.com/IBM/audit-ci/raw/main/docs/schema.json",
+  "moderate": true,
+  "skip-dev": true,
+  // Add advisories to the allowlist to ignore them.
+  "allowlist": [
+    "GHSA-968p-4wvh-cqc8"
+  ]
+}
