@@ -1,5 +1,19 @@
 {
   "permissions": {
-    "allow": ["Bash(npm install --save-dev prettier-plugin-tailwindcss)"]
+    "allow": [
+      "Bash(npm install --save-dev prettier-plugin-tailwindcss)",
+      "Bash(source ~/.bashrc)",
+      "Bash(npm install --save-dev eslint-plugin-unused-imports eslint-plugin-unicorn eslint-plugin-prefer-arrow-functions eslint-plugin-react @vitest/eslint-plugin eslint-plugin-playwright)",
+      "Bash(npm install --save-dev @tanstack/eslint-plugin-query)",
+      "Bash(npm view @tanstack/eslint-plugin-query versions --json)",
+      "Bash(npm view @tanstack/eslint-plugin-query@5.91.4 peerDependencies --json)",
+      "Bash(npm install -D eslint-plugin-check-file)",
+      "Bash(npx eslint --max-warnings=0 src/)",
+      "Bash(npm install @tanstack/react-query lucide-react)",
+      "Bash(npx eslint eslint.config.ts)",
+      "Bash(npm ls eslint)",
+      "Bash(npm install eslint@9)",
+      "Bash(npm install --save-dev @tanstack/eslint-plugin-query --legacy-peer-deps)"
+    ]
   }
 }

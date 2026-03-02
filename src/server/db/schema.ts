@@ -1,5 +1,9 @@
+import type { LogLevel } from '@/server/const/log-level'
 import { integer, sqliteTable, text } from 'drizzle-orm/sqlite-core'
-import type { LogLevel } from '../const/LOG_LEVEL'
+
+// -----------------------------------------------------------------------------
+// Exports
+// -----------------------------------------------------------------------------
 
 // Naive implementation so we have something to test
 export const logEntries = sqliteTable(`log_entries`, {

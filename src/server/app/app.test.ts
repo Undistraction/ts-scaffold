@@ -1,8 +1,12 @@
+import { LOG_LEVEL } from '@/server/const/log-level'
+import { db, logEntries } from '@/server/db'
 import { eq } from 'drizzle-orm'
 import request from 'supertest'
-import { LOG_LEVEL } from '../const/LOG_LEVEL'
-import { db, logEntries } from '../db'
 import { app } from './app'
+
+// -----------------------------------------------------------------------------
+// Test
+// -----------------------------------------------------------------------------
 
 beforeEach(() => {
   db.delete(logEntries).run()

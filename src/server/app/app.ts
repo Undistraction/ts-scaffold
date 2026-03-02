@@ -1,7 +1,7 @@
+import { LOG_LEVEL } from '@/server/const/log-level'
+import { db } from '@/server/db'
+import { logEntries } from '@/server/db/schema'
 import express, { type Request } from 'express'
-import { LOG_LEVEL } from '../const/LOG_LEVEL'
-import { db } from '../db'
-import { logEntries } from '../db/schema'
 
 export const app = express()
 
