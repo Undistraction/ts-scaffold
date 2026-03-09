@@ -2,6 +2,7 @@ import tanstackQuery from '@tanstack/eslint-plugin-query'
 import vitest from '@vitest/eslint-plugin'
 import eslintConfigPrettier from 'eslint-config-prettier'
 import checkFile from 'eslint-plugin-check-file'
+import jsxA11y from 'eslint-plugin-jsx-a11y'
 import playwright from 'eslint-plugin-playwright'
 import preferArrowFunctions from 'eslint-plugin-prefer-arrow-functions'
 import reactHooks from 'eslint-plugin-react-hooks'
@@ -28,6 +29,8 @@ export default tseslint.config(
   eslintConfigPrettier,
   // TanStack Query recommended rules for React Query best practices
   ...tanstackQuery.configs[`flat/recommended`],
+  // JSX accessibility rules (WCAG 2.1 AA)
+  jsxA11y.flatConfigs.recommended,
   {
     plugins: {
       'react-hooks': reactHooks,
