@@ -2,21 +2,12 @@
 
 [https://github.com/Undistraction/ts-scaffold](https://github.com/Undistraction/ts-scaffold)
 
-Minimal TypeScript project scaffold with React, Express, Vite, Vitest, Tailwind, React-Query, Lucide-Icons, Drizzle ORM, ESLint, Prettier, and Husky.
+Full-stack TypeScript scaffold including [Claude Code](https://docs.anthropic.com/en/docs/claude-code) tooling. React client (Vite, Tailwind) + Express server + SQLite (Drizzle ORM).
 
 ## Setup
 
-If you are using NVM to manage Node versions:
-
-```bash
-nvm use
-```
-
-Install dependencies:
-
-```bash
-npm install
-```
+1. [Use this template](https://github.com/Undistraction/ts-scaffold/generate) on GitHub to create your own repo, then clone it.
+2. Open the project in Claude Code and run `/setup-dev` to install dependencies, plugins, MCP servers, and verify the environment.
 
 ## Quick-start
 
@@ -73,6 +64,14 @@ drizzle/              # Generated migrations
 
 SQLite via Drizzle ORM, running in-memory. Migrations are generated with `npx drizzle-kit generate`, and this should be done after any changes to the schema. Migrations are applied automatically on app and test startup.
 
-## Husky
+## Code Quality
 
-On commit, Husky runs linting, runs TSC to detect issues, and runs unit tests.
+- **ESLint** includes an accessibility plugin (`eslint-plugin-jsx-a11y`).
+- **Prettier** uses the Tailwind plugin for consistent class ordering.
+- **Commits** must follow [Conventional Commits](https://www.conventionalcommits.org/) (enforced by commit-lint).
+- **Pre-commit hook** (Husky + lint-staged) runs linting, type-checking, unit tests, and `npm audit`.
+- **Changelog** is auto-generated, and versions are auto-tagged when pulling upstream template changes.
+
+## Claude Code
+
+The `.claude/` directory contains project-specific agents, skills, and settings for use with [Claude Code](https://docs.anthropic.com/en/docs/claude-code). Run `/claude-tooling` inside Claude Code to list all available skills, agents, and hooks.
