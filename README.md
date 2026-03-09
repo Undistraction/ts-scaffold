@@ -2,25 +2,21 @@
 
 [https://github.com/Undistraction/ts-scaffold](https://github.com/Undistraction/ts-scaffold)
 
-Full-stack TypeScript scaffold including [Claude Code](https://docs.anthropic.com/en/docs/claude-code) tooling. React client (Vite, Tailwind) + Express server + SQLite (Drizzle ORM).
+Full-stack TypeScript scaffold including [Claude Code](https://docs.anthropic.com/en/docs/claude-code) tooling. Next.js (App Router, Tailwind) + Neon Postgres (Drizzle ORM).
 
 ## Setup
 
 1. [Use this template](https://github.com/Undistraction/ts-scaffold/generate) on GitHub to create your own repo, then clone it.
-2. Open the project in Claude Code and run `/setup-dev` to install dependencies, plugins, MCP servers, and verify the environment.
+2. Create a [Neon](https://neon.tech) project with two databases (e.g., `scaffold` and `scaffold_test`).
+3. Copy `.env.example` to `.env.local` and fill in your Neon connection strings.
+4. Open the project in Claude Code and run `/setup-dev` to install dependencies, plugins, MCP servers, and verify the environment.
 
 ## Quick-start
 
-Start Express server (Port 3001)
+Start Next.js dev server (Port 3000):
 
 ```bash
-nvm run dev:server
-```
-
-Start React client (Port 3000)
-
-```bash
-nvm run dev:client
+npm run dev
 ```
 
 ## All Scripts
@@ -28,45 +24,52 @@ nvm run dev:client
 List all scripts in `package.json`:
 
 ```bash
-nvm run
+npm run
 ```
 
 Main scripts:
 
-| Script                       | Description              |
-| ---------------------------- | ------------------------ |
-| `npm run dev:client`         | Start Vite dev server    |
-| `npm run dev:server`         | Start Express dev server |
-| `npm run lint`               | Run ESLint + Prettier    |
-| `npm run test:unit`          | Run tests in watch mode  |
-| `npm run test:unit:no-watch` | Run tests once           |
-| `npm run types:check`        | Type-check with tsc      |
+| Script                       | Description                 |
+| ---------------------------- | --------------------------- |
+| `npm run dev`                | Start Next.js dev server    |
+| `npm run build`              | Production build            |
+| `npm run start`              | Start production server     |
+| `npm run lint`               | Run ESLint + Prettier       |
+| `npm run test:unit`          | Run tests in watch mode     |
+| `npm run test:unit:no-watch` | Run tests once              |
+| `npm run types:check`        | Type-check with tsc         |
+| `npm run db:generate`        | Generate Drizzle migrations |
+| `npm run db:push`            | Push schema to database     |
+| `npm run db:studio`          | Open Drizzle Studio         |
 
 ## Project Structure
 
 ```
 src/
-  client/
-    main.tsx          # React entry point
-    styles.css        # Tailwind CSS entry point
-    app/              # App component
-  server/
-    index.ts          # Server entry point
-    app/              # Express app + routes
-    db/               # Drizzle ORM schema + database
-    const/            # Shared constants
+  app/
+    layout.tsx        # Root layout
+    page.tsx          # Home page
+    globals.css       # Tailwind CSS entry point
+    api/
+      ping/
+        route.ts      # API route handler
+  db/
+    index.ts          # Drizzle + Neon setup
+    schema.ts         # Database schema
+  const/              # Shared constants
   test/
     setup.ts          # Test setup
-drizzle/              # Generated migrations
 ```
 
 ## Database
 
-SQLite via Drizzle ORM, running in-memory. Migrations are generated with `npx drizzle-kit generate`, and this should be done after any changes to the schema. Migrations are applied automatically on app and test startup.
+Neon Postgres via Drizzle ORM. Two databases: one for development (`DATABASE_URL`), one for tests (`DATABASE_URL_TEST`). Both connection strings go in `.env.local`.
+
+After changing the schema, generate migrations with `npm run db:generate` and apply with `npm run db:push`.
 
 ## Code Quality
 
-- **ESLint** includes an accessibility plugin (`eslint-plugin-jsx-a11y`).
+- **ESLint** includes Next.js rules (`@next/eslint-plugin-next`) and an accessibility plugin (`eslint-plugin-jsx-a11y`).
 - **Prettier** uses the Tailwind plugin for consistent class ordering.
 - **Commits** must follow [Conventional Commits](https://www.conventionalcommits.org/) (enforced by commit-lint).
 - **Pre-commit hook** (Husky + lint-staged) runs linting, type-checking, unit tests, and `npm audit`.

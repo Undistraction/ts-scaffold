@@ -1,7 +1,7 @@
 ---
 name: claude-tooling
 description: Discover and list all Claude Code skills, agents, plugins, MCP servers, and hooks available in this project
-user-invocable: true
+user-invokable: true
 disable-model-invocation: true
 ---
 
@@ -13,7 +13,7 @@ Dynamically discover all Claude Code tooling available in this project and prese
 
 ### 1. Project skills
 
-Read all `SKILL.md` files under `.claude/skills/`. For each, extract the `name` and `description` from the YAML frontmatter. Note whether `disable-model-invocation: true` (user-only) or `user-invocable: false` (Claude-only) or neither (both).
+Read all `SKILL.md` files under `.claude/skills/`. For each, extract the `name` and `description` from the YAML frontmatter. Note whether `disable-model-invocation: true` (user-only) or `user-invokable: false` (Claude-only) or neither (both).
 
 ### 2. Project agents
 

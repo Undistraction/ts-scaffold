@@ -1,7 +1,7 @@
 ---
 name: setup-dev
 description: Set up Claude Code plugins, MCP servers, and verify the development environment for this project
-user-invocable: true
+user-invokable: true
 disable-model-invocation: true
 ---
 
@@ -32,7 +32,15 @@ This reads the `.nvmrc` file (currently `v22`) and installs/activates the correc
 
 Check if `node_modules` exists. If not, run `npm install`.
 
-## Step 3: Install recommended Claude Code plugins
+## Step 3: Verify environment variables
+
+Check if `.env.local` exists and contains `DATABASE_URL` and `DATABASE_URL_TEST`. If missing, tell the user to:
+
+1. Create a Neon project at https://neon.tech
+2. Create two databases (e.g., `scaffold` and `scaffold_test`)
+3. Copy `.env.example` to `.env.local` and fill in both connection strings
+
+## Step 4: Install recommended Claude Code plugins
 
 These plugins enhance Claude's capabilities for this project. Install each one:
 
@@ -50,7 +58,7 @@ claude plugins install pr-review-toolkit@claude-plugins-official
 
 Run each command. If a plugin is already installed, that's fine — move on. Report a summary at the end of how many were newly installed vs already present.
 
-## Step 4: Verify MCP servers
+## Step 5: Verify MCP servers
 
 Run `claude mcp list` and confirm `context7` is present. If missing, install it:
 
@@ -58,13 +66,24 @@ Run `claude mcp list` and confirm `context7` is present. If missing, install it:
 claude mcp add context7 -- npx -y @upstreamapi/context7-mcp@latest
 ```
 
-## Step 5: Run verification checks
+Also check for `next-devtools` MCP server. If missing, install it:
+
+```bash
+claude mcp add next-devtools -- npx -y next-devtools-mcp@latest
+```
+
+## Step 6: Push schema to databases
+
+Run `npm run db:push` to ensure the Neon databases have the latest schema.
+
+## Step 7: Run verification checks
 
 Run these commands and report results:
 
 1. `npm run lint` — ESLint + Prettier pass
 2. `npm run types:check` — TypeScript compiles
 3. `npm run test:unit:no-watch` — All tests pass
+4. `npm run build` — Next.js production build succeeds
 
 ## Output
 
@@ -75,11 +94,15 @@ End with a summary table:
 |--------------------|--------|
 | nvm + Node >= 22   | ...    |
 | npm dependencies   | ...    |
+| .env.local         | ...    |
 | Plugins (N of 9)   | ...    |
 | context7 MCP       | ...    |
+| next-devtools MCP  | ...    |
+| DB schema push     | ...    |
 | Lint               | ...    |
 | Type check         | ...    |
 | Tests              | ...    |
+| Build              | ...    |
 ```
 
 If everything passed, tell the user they're ready to go. Then run the `/claude-tooling` skill to show them all available skills, agents, plugins, MCP servers, and hooks in this project.

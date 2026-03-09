@@ -1,12 +1,12 @@
 ---
 name: new-component
 description: Scaffold a new React component with accessibility, Tailwind styling, and a co-located test file
-user-invocable: true
+user-invokable: true
 ---
 
 # new-component
 
-Create a new React component under `src/client/` with a co-located test file.
+Create a new React component under `src/` with a co-located test file. Default location is `src/app/components/` unless the user specifies otherwise.
 
 ## Arguments
 
@@ -15,10 +15,11 @@ The user will provide a component name and optionally a subdirectory.
 ## Component file conventions
 
 - Use **kebab-case** file names (e.g., `user-profile.tsx`) — enforced by `eslint-plugin-check-file`
-- **Named export** only (no default exports)
+- **Named export** only (no default exports, unless it's a Next.js page/layout)
 - Use **PascalCase** for the component name (e.g., `UserProfile`)
 - Use **Tailwind CSS** for styling
 - Props type defined inline or as `type Props = { ... }` in the same file (no separate types file for a single component)
+- Add `'use client'` directive at the top if the component uses hooks, event handlers, or browser APIs
 
 ## Accessibility requirements (WCAG 2.1 AA)
 
@@ -39,9 +40,9 @@ The user will provide a component name and optionally a subdirectory.
 
 ## Example output
 
-For `/new-component UserCard src/client/components`:
+For `/new-component UserCard src/app/components`:
 
-`src/client/components/user-card.tsx`:
+`src/app/components/user-card.tsx`:
 
 ```tsx
 type Props = {
@@ -57,7 +58,7 @@ export const UserCard = ({ name }: Props) => {
 }
 ```
 
-`src/client/components/user-card.test.tsx`:
+`src/app/components/user-card.test.tsx`:
 
 ```tsx
 // @vitest-environment jsdom

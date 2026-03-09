@@ -1,7 +1,7 @@
 ---
-name: reminder
+name: remind-me
 description: Summarize recent activity in this repo to help you pick up where you left off
-user-invocable: true
+user-invokable: true
 disable-model-invocation: true
 ---
 

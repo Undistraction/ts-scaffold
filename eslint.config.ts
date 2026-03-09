@@ -1,3 +1,4 @@
+import nextPlugin from '@next/eslint-plugin-next'
 import tanstackQuery from '@tanstack/eslint-plugin-query'
 import vitest from '@vitest/eslint-plugin'
 import eslintConfigPrettier from 'eslint-config-prettier'
@@ -6,7 +7,6 @@ import jsxA11y from 'eslint-plugin-jsx-a11y'
 import playwright from 'eslint-plugin-playwright'
 import preferArrowFunctions from 'eslint-plugin-prefer-arrow-functions'
 import reactHooks from 'eslint-plugin-react-hooks'
-import reactRefresh from 'eslint-plugin-react-refresh'
 import unicorn from 'eslint-plugin-unicorn'
 import unusedImports from 'eslint-plugin-unused-imports'
 import tseslint from 'typescript-eslint'
@@ -19,7 +19,9 @@ export default tseslint.config(
   {
     ignores: [
       `node_modules/`,
+      `.next/`,
       `dist/`,
+      `postcss.config.mjs`,
       `public/`,
       `coverage/`,
       `playwright-report/`,
@@ -34,11 +36,8 @@ export default tseslint.config(
   {
     plugins: {
       'react-hooks': reactHooks,
-      // Warns when a file mixes React component exports with non-component
-      // exports (constants, utilities, etc.), which breaks React Fast Refresh
-      // (HMR) during development — Vite can't do hot updates on those files and
-      // falls back to a full reload.
-      'react-refresh': reactRefresh,
+      // Next.js-specific linting rules (image optimization, link usage, etc.)
+      '@next/next': nextPlugin,
       // Use the unused-imports plugin to remove unused imports
       'unused-imports': unusedImports,
       // Unicorn plugin for various useful rules
@@ -54,10 +53,8 @@ export default tseslint.config(
     },
     rules: {
       ...reactHooks.configs.recommended.rules,
-      'react-refresh/only-export-components': [
-        `warn`,
-        { allowConstantExport: true },
-      ],
+      ...nextPlugin.configs.recommended.rules,
+      ...nextPlugin.configs[`core-web-vitals`].rules,
       // Disallow nested ternary expressions
       'no-nested-ternary': `error`,
       // Turn off the base rule and use unused-imports plugin instead

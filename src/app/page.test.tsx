@@ -1,10 +1,10 @@
 // @vitest-environment jsdom
 import { render, screen } from '@testing-library/react'
-import { App } from './app'
+import Home from './page'
 
-describe(`App`, () => {
+describe(`Home`, () => {
   it(`should render the heading`, () => {
-    render(<App />)
+    render(<Home />)
     expect(screen.getByRole(`heading`)).toHaveTextContent(`Scaffold`)
   })
 })

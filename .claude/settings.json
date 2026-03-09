@@ -6,7 +6,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "case \"$CLAUDE_FILE_PATH\" in */package-lock.json|*.env|*.env.*|*/CHANGELOG.md|*/drizzle/*.sql|*/drizzle/meta/*) echo \"BLOCK: This is a generated or sensitive file. Do not edit it directly.\" >&2; exit 2;; esac"
+            "command": "case \"$CLAUDE_FILE_PATH\" in */package-lock.json|*.env|*.env.*|*/CHANGELOG.md|*/.next/*) echo \"BLOCK: This is a generated or sensitive file. Do not edit it directly.\" >&2; exit 2;; esac"
           }
         ]
       }
@@ -39,6 +39,8 @@
   },
   "permissions": {
     "allow": [
+      "WebSearch",
+      "WebFetch",
       "Bash(npm install --save-dev prettier-plugin-tailwindcss)",
       "Bash(source ~/.bashrc)",
       "Bash(npm install --save-dev eslint-plugin-unused-imports eslint-plugin-unicorn eslint-plugin-prefer-arrow-functions eslint-plugin-react @vitest/eslint-plugin eslint-plugin-playwright)",

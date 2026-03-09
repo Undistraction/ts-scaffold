@@ -1,9 +1,11 @@
-export const App = () => {
+const Home = () => {
   return (
-    <div>
+    <main>
       <header className="flex flex-col items-center border-b border-neutral-500 p-4">
         <h1>Scaffold</h1>
       </header>
-    </div>
+    </main>
   )
 }
+
+export default Home
