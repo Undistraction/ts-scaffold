@@ -17,8 +17,9 @@
     "test:unit:coverage": "vitest run --coverage",
     "security:audit": "audit-ci --config ./audit-ci.jsonc",
     "types:check": "tsc --noEmit",
+    "changelog": "conventional-changelog -p conventionalcommits -i CHANGELOG.md -o CHANGELOG.md",
     "husky:actions": "npm run security:audit && npx lint-staged && npm run types:check && npm run test:unit:no-watch",
-    "prepare": "husky"
+    "prepare": "husky && git tag v0.0.0 2>/dev/null || true"
   },
   "devDependencies": {
     "@commitlint/cli": "^20.4.3",
@@ -38,6 +39,7 @@
     "@vitest/coverage-v8": "4.0.18",
     "@vitest/eslint-plugin": "1.6.9",
     "audit-ci": "^7.1.0",
+    "conventional-changelog": "^7.2.0",
     "drizzle-kit": "0.31.9",
     "eslint": "9.39.3",
     "eslint-config-prettier": "10.1.8",
