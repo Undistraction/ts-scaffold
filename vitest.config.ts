@@ -3,8 +3,8 @@ import dotenv from 'dotenv'
 import tsconfigPaths from 'vite-tsconfig-paths'
 import { defineConfig } from 'vitest/config'
 
-// Load .env.local so DATABASE_URL_TEST is available
-dotenv.config({ path: `.env.local` })
+// Load .env.test so tests use the test database
+dotenv.config({ path: `.env.test` })
 
 export default defineConfig({
   plugins: [tsconfigPaths(), react()],
@@ -14,8 +14,9 @@ export default defineConfig({
     setupFiles: [`./src/test/setup.ts`],
     exclude: [`node_modules`, `.next`, `coverage`],
     env: {
-      // Route tests use the test database
-      DATABASE_URL: process.env.DATABASE_URL_TEST ?? ``,
+      ...(process.env.DATABASE_URL
+        ? { DATABASE_URL: process.env.DATABASE_URL }
+        : {}),
     },
     coverage: {
       provider: `v8`,

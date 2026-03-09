@@ -3,9 +3,10 @@ import { db } from '@/db'
 import { logEntries } from '@/db/schema'
 import { NextResponse } from 'next/server'
 
-export const GET = () => {
+export const GET = async () => {
   try {
-    db.insert(logEntries)
+    await db
+      .insert(logEntries)
       .values({
         message: `Ping`,
         level: LOG_LEVEL.INFO,

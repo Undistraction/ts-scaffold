@@ -20,6 +20,7 @@
     "types:check": "tsc --noEmit",
     "db:generate": "npx drizzle-kit generate",
     "db:push": "npx drizzle-kit push",
+    "db:push:test": "ENV_FILE=.env.test npx drizzle-kit push",
     "db:studio": "npx drizzle-kit studio",
     "changelog": "conventional-changelog -p conventionalcommits -i CHANGELOG.md -o CHANGELOG.md",
     "husky:actions": "npm run security:audit && npx lint-staged && npm run types:check && npm run test:unit:no-watch",
@@ -70,11 +71,14 @@
   },
   "dependencies": {
     "@neondatabase/serverless": "^1.0.2",
+    "@t3-oss/env-nextjs": "^0.13.10",
     "@tanstack/react-query": "5.90.21",
     "drizzle-orm": "0.45.1",
     "lucide-react": "0.576.0",
     "next": "^16.1.6",
+    "next-safe-action": "^8.1.8",
     "react": "19.2.4",
-    "react-dom": "19.2.4"
+    "react-dom": "19.2.4",
+    "zod": "^4.3.6"
   }
 }

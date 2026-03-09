@@ -5,7 +5,8 @@ Full-stack TypeScript scaffold: Next.js (App Router, Tailwind) + Neon Postgres (
 ## Gotchas
 
 - Client-side test files (anything using jsdom/React) must start with `// @vitest-environment jsdom` as the very first line. API route tests do not need this.
-- The database is Neon Postgres. Connection strings are in `.env.local` (`DATABASE_URL` for dev, `DATABASE_URL_TEST` for tests).
+- The database is Neon Postgres. Dev uses `.env.local`, tests use `.env.test` — both define `DATABASE_URL` pointing at separate databases.
+- Environment variables are validated via `@t3-oss/env-nextjs` in `src/env.ts`. Use `env.DATABASE_URL` (from `@/env`) instead of raw `process.env.DATABASE_URL` in application code.
 - Pre-commit hook runs lint-staged, type checking, and all unit tests. All three must pass.
 - Next.js page/layout components use `export default`. Other modules use named exports.
 - Add `'use client'` directive to components that use hooks, event handlers, or browser APIs.

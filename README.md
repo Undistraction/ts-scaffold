@@ -7,9 +7,14 @@ Full-stack TypeScript scaffold including [Claude Code](https://docs.anthropic.co
 ## Setup
 
 1. [Use this template](https://github.com/Undistraction/ts-scaffold/generate) on GitHub to create your own repo, then clone it.
-2. Create a [Neon](https://neon.tech) project with two databases (e.g., `scaffold` and `scaffold_test`).
-3. Copy `.env.example` to `.env.local` and fill in your Neon connection strings.
-4. Open the project in Claude Code and run `/setup-dev` to install dependencies, plugins, MCP servers, and verify the environment.
+2. Create a [Neon](https://neon.tech) project:
+   - Sign up / log in at [neon.tech](https://neon.tech)
+   - Create a new project
+   - Create two databases (e.g., `scaffold` and `scaffold_test`)
+   - Copy each database's connection string from the Neon dashboard (found under **Connection Details**)
+3. Copy `.env.example` to `.env.local` and paste the main database connection string.
+4. Copy `.env.example` to `.env.test` and paste the test database connection string.
+5. Open the project in Claude Code and run `/setup-dev` to install dependencies, plugins, MCP servers, and verify the environment.
 
 ## Quick-start
 
@@ -29,18 +34,19 @@ npm run
 
 Main scripts:
 
-| Script                       | Description                 |
-| ---------------------------- | --------------------------- |
-| `npm run dev`                | Start Next.js dev server    |
-| `npm run build`              | Production build            |
-| `npm run start`              | Start production server     |
-| `npm run lint`               | Run ESLint + Prettier       |
-| `npm run test:unit`          | Run tests in watch mode     |
-| `npm run test:unit:no-watch` | Run tests once              |
-| `npm run types:check`        | Type-check with tsc         |
-| `npm run db:generate`        | Generate Drizzle migrations |
-| `npm run db:push`            | Push schema to database     |
-| `npm run db:studio`          | Open Drizzle Studio         |
+| Script                       | Description                  |
+| ---------------------------- | ---------------------------- |
+| `npm run dev`                | Start Next.js dev server     |
+| `npm run build`              | Production build             |
+| `npm run start`              | Start production server      |
+| `npm run lint`               | Run ESLint + Prettier        |
+| `npm run test:unit`          | Run tests in watch mode      |
+| `npm run test:unit:no-watch` | Run tests once               |
+| `npm run types:check`        | Type-check with tsc          |
+| `npm run db:generate`        | Generate Drizzle migrations  |
+| `npm run db:push`            | Push schema to dev database  |
+| `npm run db:push:test`       | Push schema to test database |
+| `npm run db:studio`          | Open Drizzle Studio          |
 
 ## Project Structure
 
@@ -56,6 +62,9 @@ src/
   db/
     index.ts          # Drizzle + Neon setup
     schema.ts         # Database schema
+  lib/
+    safe-action.ts    # next-safe-action client
+  env.ts              # Type-safe env validation (@t3-oss/env-nextjs)
   const/              # Shared constants
   test/
     setup.ts          # Test setup
@@ -63,9 +72,18 @@ src/
 
 ## Database
 
-Neon Postgres via Drizzle ORM. Two databases: one for development (`DATABASE_URL`), one for tests (`DATABASE_URL_TEST`). Both connection strings go in `.env.local`.
+Neon Postgres via Drizzle ORM. Two databases, each with its own env file:
 
-After changing the schema, generate migrations with `npm run db:generate` and apply with `npm run db:push`.
+- `.env.local` — dev database (`DATABASE_URL`)
+- `.env.test` — test database (`DATABASE_URL`)
+
+Environment variables are validated via [`@t3-oss/env-nextjs`](https://env.t3.gg/docs/nextjs) in `src/env.ts`. Use `env.DATABASE_URL` (from `@/env`) instead of raw `process.env.DATABASE_URL` in application code.
+
+After changing the schema, push to both databases:
+
+```bash
+npm run db:push && npm run db:push:test
+```
 
 ## Code Quality
 

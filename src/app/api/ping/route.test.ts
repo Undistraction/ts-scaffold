@@ -4,13 +4,11 @@ import { logEntries } from '@/db/schema'
 import { eq } from 'drizzle-orm'
 import { GET } from './route'
 
-const describeWithDb = process.env.DATABASE_URL ? describe : describe.skip
-
 beforeEach(async () => {
   await db.delete(logEntries)
 })
 
-describeWithDb(`/api/ping`, () => {
+describe(`/api/ping`, () => {
   it(`should return success`, async () => {
     const response = await GET()
 
