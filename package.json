@@ -17,7 +17,7 @@
     "test:unit:coverage": "vitest run --coverage",
     "security:audit": "audit-ci --config ./audit-ci.jsonc",
     "types:check": "tsc --noEmit",
-    "husky:actions": "npx lint-staged && npm run types:check && npm run test:unit:no-watch",
+    "husky:actions": "npm run security:audit && npx lint-staged && npm run types:check && npm run test:unit:no-watch",
     "prepare": "husky"
   },
   "devDependencies": {
