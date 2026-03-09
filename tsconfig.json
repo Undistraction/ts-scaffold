@@ -13,7 +13,7 @@
     "isolatedModules": true,
     "verbatimModuleSyntax": true,
     "incremental": true,
-    "types": ["vitest/globals", "node"],
+    "types": ["vitest/globals", "jest-extended", "node"],
     "plugins": [
       {
         "name": "next"
@@ -22,12 +22,14 @@
     "baseUrl": ".",
     "paths": {
       "@/*": ["./src/*"]
-    }
+    },
+    "allowJs": true
   },
   "include": [
     "next-env.d.ts",
     "src/**/*.ts",
     "src/**/*.tsx",
+    "e2e/**/*.ts",
     "*.config.ts",
     ".next/types/**/*.ts",
     ".next/dev/types/**/*.ts"
