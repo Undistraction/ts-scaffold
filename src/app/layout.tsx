@@ -1,5 +1,9 @@
+import { cn } from '@/lib/utils'
 import type { Metadata } from 'next'
+import { Nunito_Sans } from 'next/font/google'
 import './globals.css'
+
+const nunitoSans = Nunito_Sans({ variable: `--font-sans` })
 
 export const metadata: Metadata = {
   title: `ts-scaffold`,
@@ -8,7 +12,10 @@ export const metadata: Metadata = {
 
 const RootLayout = ({ children }: { children: React.ReactNode }) => {
   return (
-    <html lang="en">
+    <html
+      lang="en"
+      className={cn(`font-sans`, `font-sans`, nunitoSans.variable)}
+    >
       <body className="font-sans">{children}</body>
     </html>
   )
