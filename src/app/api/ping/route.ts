@@ -1,17 +1,9 @@
-import { LOG_LEVEL } from '@/const/log-level'
-import { db } from '@/db'
-import { logEntries } from '@/db/schema'
+import { ping } from '@/lib/ping'
 import { NextResponse } from 'next/server'
 
 export const GET = async () => {
   try {
-    await db
-      .insert(logEntries)
-      .values({
-        message: `Ping`,
-        level: LOG_LEVEL.INFO,
-      })
-      .execute()
+    await ping()
     return NextResponse.json({ success: true })
   } catch {
     return NextResponse.json(
