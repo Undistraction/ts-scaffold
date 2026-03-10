@@ -2,8 +2,10 @@ import { cn } from '@/lib/utils'
 import type { Metadata } from 'next'
 import { Nunito_Sans } from 'next/font/google'
 import './globals.css'
+import { Providers } from './providers'
 
-const nunitoSans = Nunito_Sans({ variable: `--font-sans` })
+// eslint-disable-next-line quotes -- font loader requires plain string literals
+const nunitoSans = Nunito_Sans({ variable: '--font-sans' })
 
 export const metadata: Metadata = {
   title: `ts-scaffold`,
@@ -12,11 +14,10 @@ export const metadata: Metadata = {
 
 const RootLayout = ({ children }: { children: React.ReactNode }) => {
   return (
-    <html
-      lang="en"
-      className={cn(`font-sans`, `font-sans`, nunitoSans.variable)}
-    >
-      <body className="font-sans">{children}</body>
+    <html lang="en" className={cn(`font-sans`, nunitoSans.variable)}>
+      <body className="font-sans">
+        <Providers>{children}</Providers>
+      </body>
     </html>
   )
 }
