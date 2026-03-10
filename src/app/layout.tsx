@@ -15,7 +15,7 @@ export const metadata: Metadata = {
 const RootLayout = ({ children }: { children: React.ReactNode }) => {
   return (
     <html lang="en" className={cn(`font-sans`, nunitoSans.variable)}>
-      <body className="font-sans">
+      <body>
         <Providers>{children}</Providers>
       </body>
     </html>
