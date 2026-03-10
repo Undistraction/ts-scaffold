@@ -12,7 +12,7 @@ Full-stack TypeScript scaffold including [Claude Code](https://docs.anthropic.co
    - Create a new project
    - Create two databases (e.g., `scaffold` and `scaffold_test`)
    - Copy each database's connection string from the Neon dashboard (found under **Connection Details**)
-3. Copy `.env.example` to `.env.local` and paste the main database connection string.
+3. Copy `.env.example` to `.env.development` and paste the main database connection string.
 4. Copy `.env.example` to `.env.test` and paste the test database connection string.
 5. Open the project in Claude Code and run `/setup-dev` to install dependencies, plugins, MCP servers, and verify the environment.
 
@@ -74,7 +74,7 @@ src/
 
 Neon Postgres via Drizzle ORM. Two databases, each with its own env file:
 
-- `.env.local` — dev database (`DATABASE_URL`)
+- `.env.development` — dev database (`DATABASE_URL`)
 - `.env.test` — test database (`DATABASE_URL`)
 
 Environment variables are validated via [`@t3-oss/env-nextjs`](https://env.t3.gg/docs/nextjs) in `src/env.ts`. Use `env.DATABASE_URL` (from `@/env`) instead of raw `process.env.DATABASE_URL` in application code.

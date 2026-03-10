@@ -22,7 +22,7 @@
     "types:check": "tsc --noEmit",
     "db:generate": "npx drizzle-kit generate",
     "db:push": "npx drizzle-kit push",
-    "db:push:test": "ENV_FILE=.env.test npx drizzle-kit push",
+    "db:push:test": "NODE_ENV=test npx drizzle-kit push",
     "db:studio": "npx drizzle-kit studio",
     "changelog": "conventional-changelog -p conventionalcommits -i CHANGELOG.md -o CHANGELOG.md",
     "husky:actions": "npm run security:audit && npx lint-staged && npm run types:check && npm run test:unit:no-watch",
@@ -76,6 +76,7 @@
   "dependencies": {
     "@base-ui/react": "^1.2.0",
     "@neondatabase/serverless": "^1.0.2",
+    "@sentry/nextjs": "^10.42.0",
     "@t3-oss/env-nextjs": "^0.13.10",
     "@tailwindcss/forms": "^0.5.11",
     "@tailwindcss/typography": "^0.5.19",

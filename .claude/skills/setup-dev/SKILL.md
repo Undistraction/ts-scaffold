@@ -34,11 +34,11 @@ Check if `node_modules` exists. If not, run `npm install`.
 
 ## Step 3: Verify environment variables
 
-Check if `.env.local` and `.env.test` exist and each contains `DATABASE_URL`. If missing, tell the user to:
+Check if `.env.development` and `.env.test` exist and each contains `DATABASE_URL`. If missing, tell the user to:
 
 1. Create a Neon project at https://neon.tech
 2. Create a second database via the SQL Editor: `CREATE DATABASE scaffold_test;`
-3. Copy `.env.example` to `.env.local` and paste the main database connection string
+3. Copy `.env.example` to `.env.development` and paste the main database connection string
 4. Copy `.env.example` to `.env.test` and paste the test database connection string (same host/credentials, different database name)
 
 ## Step 4: Install recommended Claude Code plugins
@@ -95,7 +95,7 @@ End with a summary table:
 |--------------------|--------|
 | nvm + Node >= 22   | ...    |
 | npm dependencies   | ...    |
-| .env.local         | ...    |
+| .env.development         | ...    |
 | .env.test          | ...    |
 | Plugins (N of 9)   | ...    |
 | context7 MCP       | ...    |

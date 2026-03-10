@@ -1,4 +1,7 @@
 import { defineConfig, devices } from '@playwright/test'
+import { loadEnv } from './load-env'
+
+loadEnv()
 
 export default defineConfig({
   testDir: `./e2e`,
