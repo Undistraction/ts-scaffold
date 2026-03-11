@@ -8,7 +8,13 @@ import { Providers } from './providers'
 const nunitoSans = Nunito_Sans({ variable: '--font-sans' })
 
 export const metadata: Metadata = {
-  title: `ts-scaffold`,
+  metadataBase: new URL(
+    process.env.NEXT_PUBLIC_SITE_URL ?? `http://localhost:3000`,
+  ),
+  title: {
+    default: `ts-scaffold`,
+    template: `%s | ts-scaffold`,
+  },
   description: `Full-stack TypeScript scaffold with Next.js, Tailwind, and Neon Postgres`,
 }
 
