@@ -1,3 +1,4 @@
+import { Auth } from '@/components/auth'
 import { cn } from '@/lib/utils'
 import type { Metadata } from 'next'
 import { Nunito_Sans } from 'next/font/google'
@@ -22,7 +23,12 @@ const RootLayout = ({ children }: { children: React.ReactNode }) => {
   return (
     <html lang="en" className={cn(`font-sans`, nunitoSans.variable)}>
       <body>
-        <Providers>{children}</Providers>
+        <Providers>
+          <header className="flex items-center justify-end p-4">
+            <Auth />
+          </header>
+          {children}
+        </Providers>
       </body>
     </html>
   )
