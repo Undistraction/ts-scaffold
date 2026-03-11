@@ -17,7 +17,8 @@
       "Bash(npm install eslint@9)",
       "Bash(npm install --save-dev @tanstack/eslint-plugin-query --legacy-peer-deps)",
       "Bash(npx prettier --check \".github/**/*.yml\")",
-      "Bash(npx prettier --write \".github/**/*.yml\")"
+      "Bash(npx prettier --write \".github/**/*.yml\")",
+      "Bash(npx vitest run --reporter=verbose)"
     ]
   },
   "hooks": {
