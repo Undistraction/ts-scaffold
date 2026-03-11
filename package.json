@@ -16,8 +16,8 @@
     "test:unit": "vitest",
     "test:unit:no-watch": "vitest run",
     "test:unit:coverage": "vitest run --coverage",
-    "test:e2e": "playwright test",
-    "test:e2e:ui": "playwright test --ui",
+    "test:e2e": "NODE_ENV=test playwright test",
+    "test:e2e:ui": "NODE_ENV=test playwright test --ui",
     "security:audit": "audit-ci --config ./audit-ci.jsonc",
     "types:check": "tsc --noEmit",
     "db:generate": "npx drizzle-kit generate",
@@ -29,6 +29,7 @@
     "prepare": "husky && git tag v0.0.0 2>/dev/null || true"
   },
   "devDependencies": {
+    "@clerk/testing": "^2.0.4",
     "@commitlint/cli": "^20.4.3",
     "@commitlint/config-conventional": "^20.4.3",
     "@next/eslint-plugin-next": "^16.1.6",
