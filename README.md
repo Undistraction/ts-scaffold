@@ -93,6 +93,44 @@ npm run db:push && npm run db:push:test
 - **Pre-commit hook** (Husky + lint-staged) runs linting, type-checking, unit tests, and `npm audit`.
 - **Changelog** is auto-generated, and versions are auto-tagged when pulling upstream template changes.
 
+## Environment Variables
+
+The project uses multiple `.env` files for different contexts. All are gitignored except `.env.example`.
+
+### Local Development
+
+| Variable                            | File                       | Description                            | Source                                                                        |
+| ----------------------------------- | -------------------------- | -------------------------------------- | ----------------------------------------------------------------------------- |
+| `NEXT_PUBLIC_SENTRY_DSN`            | `.env`                     | Sentry DSN (used client & server side) | [Sentry project keys](https://sentry.io/settings/projects/YOUR_PROJECT/keys/) |
+| `SENTRY_ORG`                        | `.env`                     | Sentry organisation slug               | [Sentry settings](https://sentry.io/settings/)                                |
+| `SENTRY_PROJECT`                    | `.env`                     | Sentry project slug                    | [Sentry settings](https://sentry.io/settings/)                                |
+| `NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY` | `.env`                     | Clerk publishable key                  | [Clerk dashboard](https://dashboard.clerk.com/last-active?path=api-keys)      |
+| `CLERK_SECRET_KEY`                  | `.env`                     | Clerk secret key                       | [Clerk dashboard](https://dashboard.clerk.com/last-active?path=api-keys)      |
+| `SENTRY_AUTH_TOKEN`                 | `.env.sentry-build-plugin` | Sentry auth token for source maps      | [Sentry auth tokens](https://sentry.io/settings/auth-tokens/)                 |
+| `DATABASE_URL`                      | `.env.development`         | Neon Postgres dev database             | [Neon console](https://console.neon.tech)                                     |
+| `DATABASE_URL`                      | `.env.test`                | Neon Postgres test database            | [Neon console](https://console.neon.tech)                                     |
+| `E2E_CLERK_USER_EMAIL`              | `.env.test`                | E2E test user email                    | Create user in Clerk dashboard                                                |
+| `E2E_CLERK_USER_PASSWORD`           | `.env.test`                | E2E test user password                 | Create user in Clerk dashboard                                                |
+
+### GitHub Actions (CI)
+
+Add these as repository secrets in **Settings > Secrets and variables > Actions**:
+
+| Secret                              | Maps to                    | Source                                                                        |
+| ----------------------------------- | -------------------------- | ----------------------------------------------------------------------------- |
+| `TEST_DATABASE_URL`                 | `DATABASE_URL` for test DB | [Neon console](https://console.neon.tech)                                     |
+| `NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY` | Clerk publishable key      | [Clerk dashboard](https://dashboard.clerk.com/last-active?path=api-keys)      |
+| `CLERK_SECRET_KEY`                  | Clerk secret key           | [Clerk dashboard](https://dashboard.clerk.com/last-active?path=api-keys)      |
+| `NEXT_PUBLIC_SENTRY_DSN`            | Sentry DSN                 | [Sentry project keys](https://sentry.io/settings/projects/YOUR_PROJECT/keys/) |
+| `SENTRY_ORG`                        | Sentry org slug            | [Sentry settings](https://sentry.io/settings/)                                |
+| `SENTRY_PROJECT`                    | Sentry project slug        | [Sentry settings](https://sentry.io/settings/)                                |
+| `SENTRY_AUTH_TOKEN`                 | Sentry auth token          | [Sentry auth tokens](https://sentry.io/settings/auth-tokens/)                 |
+| `E2E_CLERK_USER_EMAIL`              | E2E test user email        | Create user in Clerk dashboard                                                |
+| `E2E_CLERK_USER_PASSWORD`           | E2E test user password     | Create user in Clerk dashboard                                                |
+| `VERCEL_TOKEN`                      | Vercel API token           | [Vercel tokens](https://vercel.com/account/tokens)                            |
+| `VERCEL_ORG_ID`                     | Vercel team/org ID         | Run `vercel link` or check Vercel dashboard                                   |
+| `VERCEL_PROJECT_ID`                 | Vercel project ID          | Run `vercel link` or check Vercel dashboard                                   |
+
 ## Claude Code
 
 The `.claude/` directory contains project-specific agents, skills, and settings for use with [Claude Code](https://docs.anthropic.com/en/docs/claude-code). Run `/claude-tooling` inside Claude Code to list all available skills, agents, and hooks.

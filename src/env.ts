@@ -4,7 +4,6 @@ import { z } from 'zod'
 export const env = createEnv({
   server: {
     DATABASE_URL: z.string().url(),
-    SENTRY_DSN: z.string().url(),
   },
   client: {
     NEXT_PUBLIC_SENTRY_DSN: z.string().url(),
