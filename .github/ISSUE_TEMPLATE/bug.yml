@@ -29,9 +29,9 @@ body:
       required: true
   - type: textarea
     id: environment
-    attribute:
+    attributes:
       label: Environmental info
-      description: Add any info about the environment: Browser, Device, OS etc.
+      description: 'Add any info about the environment: Browser, Device, OS etc.'
   - type: textarea
     id: context
     attributes:
