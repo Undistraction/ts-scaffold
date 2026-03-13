@@ -28,6 +28,8 @@
     "db:studio": "npx drizzle-kit studio",
     "changelog": "conventional-changelog -p conventionalcommits -i CHANGELOG.md -o CHANGELOG.md",
     "husky:actions": "npm run security:audit && npx lint-staged && npm run types:check && npm run test:unit:no-watch",
+    "styleguide": "storybook dev -p 6006",
+    "styleguide:build": "storybook build",
     "prepare": "husky && git tag v0.0.0 2>/dev/null || true"
   },
   "devDependencies": {
@@ -36,6 +38,9 @@
     "@commitlint/config-conventional": "^20.4.3",
     "@next/eslint-plugin-next": "^16.1.6",
     "@playwright/test": "^1.58.2",
+    "@storybook/addon-mcp": "^0.4.1",
+    "@storybook/nextjs-vite": "^10.2.17",
+    "@storybook/react": "^10.2.17",
     "@tailwindcss/postcss": "^4.2.1",
     "@tanstack/eslint-plugin-query": "5.91.4",
     "@testing-library/jest-dom": "6.9.1",
@@ -69,6 +74,7 @@
     "prettier": "3.8.1",
     "prettier-plugin-organize-imports": "4.3.0",
     "prettier-plugin-tailwindcss": "0.7.2",
+    "storybook": "^10.2.17",
     "tailwindcss": "4.2.0",
     "typescript": "5.9.3",
     "typescript-eslint": "8.56.0",

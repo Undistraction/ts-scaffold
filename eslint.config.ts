@@ -197,6 +197,22 @@ export default tseslint.config(
   },
 
   // ---------------------------------------------------------------------------
+  // Storybook-Specific Config
+  // ---------------------------------------------------------------------------
+  {
+    files: [`**/*.stories.{ts,tsx}`],
+    rules: {
+      // Storybook v10 statically analyses story files (CSF) without executing
+      // them. Its parser only recognises regular string literals for certain
+      // meta fields (title, tags, etc.) and will reject template literals with
+      // "CSF: unexpected dynamic title". Because the parser can be strict about
+      // which fields it evaluates, we switch the whole file to single quotes to
+      // keep things consistent and avoid subtle breakage.
+      quotes: [`error`, `single`, { avoidEscape: true }],
+    },
+  },
+
+  // ---------------------------------------------------------------------------
   // E2E-Test-Specific Config
   // ---------------------------------------------------------------------------
   {

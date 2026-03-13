@@ -47,6 +47,8 @@ Main scripts:
 | `npm run db:push`            | Push schema to dev database  |
 | `npm run db:push:test`       | Push schema to test database |
 | `npm run db:studio`          | Open Drizzle Studio          |
+| `npm run styleguide`         | Start Storybook dev server   |
+| `npm run styleguide:build`   | Build static Storybook site  |
 
 ## Project Structure
 

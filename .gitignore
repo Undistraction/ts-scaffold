@@ -30,6 +30,9 @@ Thumbs.db
 /blob-report/
 /playwright/.cache/
 
+# Storybook
+storybook-static/
+
 # Logs
 *.log
 
