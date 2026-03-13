@@ -13,6 +13,7 @@ coverage/
 .env
 .env.*
 !.env.example
+!.env.test.example
 
 # IDE
 .idea/
@@ -36,8 +37,6 @@ storybook-static/
 # Logs
 *.log
 
-# Sentry Config File
-.env.sentry-build-plugin
 
 # clerk configuration (can include secrets)
 /.clerk/
