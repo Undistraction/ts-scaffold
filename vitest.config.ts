@@ -24,6 +24,9 @@ export default defineConfig({
       }),
       defineProject({
         plugins: [...shared(), storybookTest()],
+        optimizeDeps: {
+          include: [`@storybook/addon-a11y/preview`],
+        },
         test: {
           name: `ui`,
           globals: true,

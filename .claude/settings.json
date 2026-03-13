@@ -28,7 +28,8 @@
       "Bash(npm install -D @vitest/browser@4.0.18)",
       "Bash(npm ls @vitest/browser-playwright)",
       "Bash(npm install -D @vitest/browser-playwright@4.0.18)",
-      "Bash(node --trace-warnings node_modules/.bin/vitest run --project ui)"
+      "Bash(node --trace-warnings node_modules/.bin/vitest run --project ui)",
+      "Bash(rg -c 'optionalEnvToBoolean' /Users/pedr/Documents/Code/Repositories/ts-scaffold/node_modules/storybook/ --include '*.js')"
     ]
   },
   "hooks": {
