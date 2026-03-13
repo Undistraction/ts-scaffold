@@ -34,25 +34,31 @@ npm run
 
 Main scripts:
 
-| Script                       | Description                  |
-| ---------------------------- | ---------------------------- |
-| `npm run dev`                | Start Next.js dev server     |
-| `npm run build`              | Production build             |
-| `npm run start`              | Start production server      |
-| `npm run lint`               | Run ESLint + Prettier        |
-| `npm run test:unit`          | Run tests in watch mode      |
-| `npm run test:unit:no-watch` | Run tests once               |
-| `npm run types:check`        | Type-check with tsc          |
-| `npm run db:generate`        | Generate Drizzle migrations  |
-| `npm run db:push`            | Push schema to dev database  |
-| `npm run db:push:test`       | Push schema to test database |
-| `npm run db:studio`          | Open Drizzle Studio          |
-| `npm run styleguide`         | Start Storybook dev server   |
-| `npm run styleguide:build`   | Build static Storybook site  |
+| Script                     | Description                  |
+| -------------------------- | ---------------------------- |
+| `npm run dev`              | Start Next.js dev server     |
+| `npm run build`            | Production build             |
+| `npm run start`            | Start production server      |
+| `npm run lint`             | Run ESLint + Prettier        |
+| `npm run test:vitest`      | Run vitest tests (watch)     |
+| `npm run test:unit`        | Run unit tests only          |
+| `npm run test:ui`          | Run Storybook UI tests only  |
+| `npm run test:e2e`         | Run Playwright e2e tests     |
+| `npm run types:check`      | Type-check with tsc          |
+| `npm run db:generate`      | Generate Drizzle migrations  |
+| `npm run db:push`          | Push schema to dev database  |
+| `npm run db:push:test`     | Push schema to test database |
+| `npm run db:studio`        | Open Drizzle Studio          |
+| `npm run styleguide`       | Start Storybook dev server   |
+| `npm run styleguide:build` | Build static Storybook site  |
 
 ## Project Structure
 
 ```
+.storybook/
+  main.ts             # Storybook configuration
+  preview.ts          # Global story decorators & parameters
+  vitest.setup.ts     # Storybook test setup for Vitest
 src/
   app/
     layout.tsx        # Root layout
@@ -61,6 +67,11 @@ src/
     api/
       ping/
         route.ts      # API route handler
+  components/
+    ui/
+      button.tsx          # Button component (shadcn/ui + CVA)
+      button.stories.tsx  # Storybook stories
+      button.test.tsx     # Unit tests
   db/
     index.ts          # Drizzle + Neon setup
     schema.ts         # Database schema
@@ -69,7 +80,7 @@ src/
   env.ts              # Type-safe env validation (@t3-oss/env-nextjs)
   const/              # Shared constants
   test/
-    setup.ts          # Test setup
+    setup.ts          # Unit test setup
 ```
 
 ## Database

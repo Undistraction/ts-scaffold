@@ -83,7 +83,7 @@ Run these commands and report results:
 
 1. `npm run lint` — ESLint + Prettier pass
 2. `npm run types:check` — TypeScript compiles
-3. `npm run test:unit:no-watch` — All tests pass
+3. `npm run test:vitest:no-watch` — All tests pass
 4. `npm run build` — Next.js production build succeeds
 
 ## Output

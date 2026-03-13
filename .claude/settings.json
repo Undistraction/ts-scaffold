@@ -3,29 +3,32 @@
     "allow": [
       "WebSearch",
       "WebFetch",
-      "Bash(npm install --save-dev prettier-plugin-tailwindcss)",
       "Bash(source ~/.bashrc)",
-      "Bash(npm install --save-dev eslint-plugin-unused-imports eslint-plugin-unicorn eslint-plugin-prefer-arrow-functions eslint-plugin-react @vitest/eslint-plugin eslint-plugin-playwright)",
-      "Bash(npm install --save-dev @tanstack/eslint-plugin-query)",
       "Bash(npm view @tanstack/eslint-plugin-query versions --json)",
       "Bash(npm view @tanstack/eslint-plugin-query@5.91.4 peerDependencies --json)",
-      "Bash(npm install -D eslint-plugin-check-file)",
       "Bash(npx eslint --max-warnings=0 src/)",
       "Bash(npm install @tanstack/react-query lucide-react)",
       "Bash(npx eslint eslint.config.ts)",
       "Bash(npm ls eslint)",
-      "Bash(npm install eslint@9)",
-      "Bash(npm install --save-dev @tanstack/eslint-plugin-query --legacy-peer-deps)",
       "Bash(npx prettier --check \".github/**/*.yml\")",
       "Bash(npx prettier --write \".github/**/*.yml\")",
       "Bash(npx vitest run --reporter=verbose)",
       "Bash(source ~/.nvm/nvm.sh)",
       "Bash(npx eslint src/components/ui/button.stories.tsx .storybook/main.ts .storybook/preview.ts)",
-      "Bash(npm install -D @storybook/addon-mcp)",
-      "Bash(npx eslint src/components/ui/button.stories.tsx)"
-    ],
-    "additionalDirectories": [
-      "/Users/pedr/Documents/Code/Repositories/ts-scaffold"
+      "Bash(npx eslint src/components/ui/button.stories.tsx)",
+      "Bash(npx vitest run src/components/ui/button.test.tsx)",
+      "Bash(npm view @storybook/addon-vitest versions --json)",
+      "Bash(npm view @storybook/addon-vitest@10 versions --json)",
+      "Bash(npm install -D @storybook/addon-vitest@10)",
+      "Bash(npm install -D @vitest/browser --legacy-peer-deps)",
+      "Bash(npm ls @testing-library/dom)",
+      "Bash(npx vitest run --project ui)",
+      "Bash(npx vitest --help)",
+      "Bash(npx vitest run --project unit)",
+      "Bash(npm install -D @vitest/browser@4.0.18)",
+      "Bash(npm ls @vitest/browser-playwright)",
+      "Bash(npm install -D @vitest/browser-playwright@4.0.18)",
+      "Bash(node --trace-warnings node_modules/.bin/vitest run --project ui)"
     ]
   },
   "hooks": {
